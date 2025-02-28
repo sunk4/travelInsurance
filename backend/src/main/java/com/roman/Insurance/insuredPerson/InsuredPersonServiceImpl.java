@@ -26,7 +26,8 @@ public class InsuredPersonServiceImpl implements InsuredPersonService {
     private EntityManager entityManager;
 
     @Override
-    public List<UUID> createInsuredPerson (List<InsuredPersonDTO> insuredPersonDTOS, UUID insuranceId) throws Exception {
+    public void createInsuredPerson (List<InsuredPersonDTO> insuredPersonDTOS,
+                                  UUID insuranceId) throws Exception {
 
         List<InsuredPersonEntity> insuredPersonEntities = new ArrayList<>();
 
@@ -44,7 +45,6 @@ public class InsuredPersonServiceImpl implements InsuredPersonService {
 
         entityManager.clear();
 
-        return savedInsuredPersonEntities.stream().map(InsuredPersonEntity::getId).toList();
     }
 
     @Override

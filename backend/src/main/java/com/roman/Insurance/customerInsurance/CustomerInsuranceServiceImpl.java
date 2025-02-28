@@ -10,9 +10,9 @@ import com.roman.Insurance.mainCustomer.MainCustomerService;
 import com.roman.Insurance.pdfgenerator.PdfGeneratorService;
 import com.roman.Insurance.s3Bucket.UploadService;
 import com.roman.Insurance.stripe.StripeService;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -30,6 +30,7 @@ public class CustomerInsuranceServiceImpl implements CustomerInsuranceService {
     private final StripeService stripeService;
 
     @Override
+    @Transactional
     public void createTravelInsurance (CustomerTravelInsuranceRequest customerTravelInsuranceRequest) throws Exception {
         UUID mainCustomerId = customerService.createMainCustomer(customerTravelInsuranceRequest.mainCustomerDto());
         CalculationDto calculationDto =
@@ -37,16 +38,25 @@ public class CustomerInsuranceServiceImpl implements CustomerInsuranceService {
         UUID insuranceId =
                 insuranceService.createInsurance(customerTravelInsuranceRequest.insuranceDTO(), mainCustomerId, calculationDto.totalCalculatedPrice());
 
-        List<UUID> insuredPersonIds =
                 insurePersonService.createInsuredPerson(customerTravelInsuranceRequest.insuredPersonDTO(), insuranceId);
         MainCustomerEntity mainCustomer = customerService.getCustomerByIdEncrypted(mainCustomerId);
-
 
         byte[] generatedPdf = pdfGeneratorService.generatePdf(mainCustomer);
         String pdfUrl = uploadService.uploadFileToS3(generatedPdf,
                 mainCustomerId.toString() +
                         mainCustomer.getLastName() + mainCustomer.getFirstName());
-        //generate stripe link
+
+        insuranceService.updateUrlPreview(insuranceId, pdfUrl);
+
+        double totalPrice = mainCustomer.getInsurances().get(0).getTotalPrice();
+        String description = mainCustomer.getEmail();
+
+        String paymentLink = stripeService.createPaymentLink(totalPrice,"EUR"
+                , description, insuranceId, mainCustomerId);
+
+      emailService.sendEmailWithGeneratedAttachment(mainCustomer.getEmail(),
+              paymentLink,"Travel Insurance", "emailTemplate", generatedPdf, mainCustomer.getLastName() + mainCustomer.getFirstName() + ".pdf");
+
 
     }
 }

@@ -71,7 +71,7 @@ public class InsuranceEntity {
     @JsonBackReference
     private MainCustomerEntity customer;
 
-    @OneToMany(mappedBy = "insurance", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "insurance")
     @JsonManagedReference
     private List<InsuredPersonEntity> insuredPersons;
 

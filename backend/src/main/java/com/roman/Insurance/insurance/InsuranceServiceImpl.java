@@ -48,4 +48,11 @@ public class InsuranceServiceImpl implements InsuranceService {
     public InsuranceEntity getInsuranceEntityById (UUID id) {
         return insuranceRepository.findById(id).orElseThrow(() -> new RuntimeException("Insurance not found"));
     }
+
+    @Override
+    public void updateUrlPreview (UUID id, String url) {
+        InsuranceEntity insuranceEntity = getInsuranceEntityById(id);
+        insuranceEntity.setUrlInsurancePreview(url);
+        insuranceRepository.save(insuranceEntity);
+    }
 }
