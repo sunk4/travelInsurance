@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Contract</title>
+    <meta charset="UTF-8"/>
+    <style>
+        body {
+            font-family: 'Noto Sans', Arial, sans-serif;
+            line-height: 1.1;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        ul {
+            list-style-type: none;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        header img {
+            position: absolute;
+            top: 25px;
+            left: 5px;
+            width: 60px;
+            height: auto;
+        }
+        .hero {
+            background-color: white;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+        }
+        .hero h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .address-container {
+            white-space: nowrap;
+            overflow: hidden;
+            margin-bottom: 10px;
+            text-align: left;
+            width: 100%;
+        }
+        .address {
+            display: inline-block;
+            width: 44%;
+            vertical-align: top;
+            padding: 2px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            margin-right: 2px;
+            box-sizing: border-box;
+        }
+        h3, h4 {
+            color: #333;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        ul li{
+            font-size: 14px;
+        }
+        .type_insurance{
+            margin-bottom: 10px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <img class="logo" src="/images/logo.png" alt="logo"/>
+    <h1>Travel Safe a.s. - Cestovné poistenie</h1>
+    <h2>Faktúra</h2>
+</header>
+<main>
+    <section class="hero">
+        <h2>Zmluva č. <span th:text="${mainCustomer.id}"></span></h2>
+
+        <div class="address-container">
+            <div class="address">
+                <h2>Dodávateľ</h2>
+                <div>
+                    <ul>
+                        <li>Test Street 15</li>
+                        <li>83102 Bratislava</li>
+                        <li><span>IČO: </span>45456465</li>
+                        <li><span>DIČO: </span>45456465</li>
+                        <li>trnka.roman13@gmail.com</li>
+                        <li>www.random_web.sk</li>
+                        <li>SKXXXXXXXXXXXXXXXXXXXXXXXX</li>
+                        <li>Bank a.s.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="address">
+                <h2>Objednávateľ</h2>
+                <ul>
+                    <li th:text="${mainCustomer.firstName} + ' ' + ${mainCustomer.lastName}"></li>
+                    <li th:text="${mainCustomer.address}"></li>
+                    <li th:text="${mainCustomer.zipCode + ' ' + mainCustomer.city}"></li>
+                    <li th:text="${mainCustomer.state}"></li>
+                    <li>Email: <span th:text="${mainCustomer.email}"></span></li>
+                    <li>Tel. č.: <span th:text="${mainCustomer.phoneNumber}"></span></li>
+                </ul>
+            </div>
+        </div>
+
+        <h3>Poistenie</h3>
+        <ul th:each="insurance : ${mainCustomer.insurances}">
+            <li>Krajina: <span th:text="${insurance.country.name}"></span></li>
+            <li>Región: <span th:text="${insurance.country.coverageRegion.name}"></span></li>
+            <li>Začiatok cesty: <span th:text="${insurance.startDate}"></span></li>
+            <li>Koniec cesty: <span th:text="${insurance.endDate}"></span></li>
+            <li>Status platby: <span th:text="${insurance.statusOfPayment}"></span></li>
+            <li>Cena: <span th:text="${insurance.totalPrice + ' €'}"></span></li>
+            <h4>Typ pripoistenia</h4>
+            <ul>
+                <li class="type_insurance" th:each="type : ${insurance.insuranceTypes}">
+                    <span th:text="${type.name}"></span> - <span th:text="${type.description}"></span>
+                </li>
+            </ul>
+        </ul>
+
+        <h3>Poistené osoby</h3>
+        <table>
+            <tr>
+                <th>Meno</th>
+                <th>Dátum narodenia</th>
+                <th>Kategória</th>
+                <th>Riziková skupina</th>
+            </tr>
+            <tr th:each="person : ${mainCustomer.insurances[0].insuredPersons}">
+                <td th:text="${person.firstName + ' ' + person.lastName}"></td>
+                <td th:text="${person.dateOfBirth}"></td>
+                <td th:text="${person.ageCategory.name}"></td>
+                <td th:text="${person.riskFactor.name}"></td>
+            </tr>
+        </table>
+    </section>
+</main>
+<footer>
+    <p>Travel Safe a.s. - All rights reserved</p>
+</footer>
+</body>
+</html>

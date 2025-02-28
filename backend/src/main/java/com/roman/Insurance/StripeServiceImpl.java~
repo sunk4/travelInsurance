@@ -1,0 +1,39 @@
+package com.roman.Insurance;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+@Service
+public class StripeServiceImpl implements StripeService {
+
+    @Value("${stripe.secret-key}")
+    private String secretKey;
+    @Override
+    public String createPaymentLink (double amount, String currency, String description) {
+        try {
+            PaymentLinkCreateParams params = PaymentLinkCreateParams.builder()
+                    .addLineItem(
+                            PaymentLinkCreateParams.LineItem.builder()
+                                    .setPriceData(
+                                            PaymentLinkCreateParams.LineItem.PriceData.builder()
+                                                    .setCurrency(currency)
+                                                    .setProductData(
+                                                            PaymentLinkCreateParams.LineItem.PriceData.ProductData.builder()
+                                                                    .setName(description)
+                                                                    .build()
+                                                    )
+                                                    .setUnitAmount((long) (amount * 100)) // Amount in cents
+                                                    .build()
+                                    )
+                                    .setQuantity(1L)
+                                    .build()
+                    )
+                    .build();
+
+            PaymentLink paymentLink = PaymentLink.create(params);
+            return paymentLink.getUrl();
+        } catch (Exception e) {
+            throw new RuntimeException("Error creating payment link", e);
+        }
+    }
+}
