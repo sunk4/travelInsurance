@@ -52,7 +52,7 @@ public class CustomerInsuranceServiceImpl implements CustomerInsuranceService {
         String description = mainCustomer.getEmail();
 
         String paymentLink = stripeService.createPaymentLink(totalPrice,"EUR"
-                , description, insuranceId, mainCustomerId);
+                , description, mainCustomerId, insuranceId);
 
       emailService.sendEmailWithGeneratedAttachment(mainCustomer.getEmail(),
               paymentLink,"Travel Insurance", "emailTemplate", generatedPdf, mainCustomer.getLastName() + mainCustomer.getFirstName() + ".pdf");

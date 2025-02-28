@@ -1,9 +1,9 @@
 package com.roman.Insurance.stripe;
 
-import com.roman.Insurance.mainCustomer.MainCustomerService;
-import com.roman.Insurance.mainCustomer.MainCustomerEntity;
 import com.roman.Insurance.email.EmailService;
 import com.roman.Insurance.insurance.InsuranceService;
+import com.roman.Insurance.mainCustomer.MainCustomerEntity;
+import com.roman.Insurance.mainCustomer.MainCustomerService;
 import com.roman.Insurance.pdfgenerator.PdfGeneratorService;
 import com.roman.Insurance.s3Bucket.UploadService;
 import com.stripe.Stripe;
@@ -40,7 +40,7 @@ public class StripeController {
             @RequestBody String payload,
             @RequestHeader("Stripe-Signature") String sigHeader
     ) {
-
+        System.out.println("HAHAHAHA");
         try {
             Stripe.apiKey = secretKey;
             Event event = Webhook.constructEvent(payload, sigHeader,
@@ -51,30 +51,27 @@ public class StripeController {
                         .getObject()
                         .orElseThrow(() -> new IllegalArgumentException("Invalid data object"));
 
+                UUID mainCustomerId = UUID.fromString(session.getMetadata().get(
+                        "mainCustomerId"));
                 UUID insuranceId = UUID.fromString(session.getMetadata().get("insuranceId"));
-                UUID customerId = UUID.fromString(session.getMetadata().get("customerId"));
 
-//                InsuranceEntity insurance =
-//                        insuranceService.updateStatusOfPayment(insuranceId,
-//                                StatusOfPayment.PAID);
                 MainCustomerEntity customer =
-                        customerService.getCustomerById(customerId);
+                        customerService.getCustomerById(mainCustomerId);
 
-//                byte[] pdf = pdfGeneratorService.generatePdf(customer,
-//                        insurance);
-//                String url = uploadService.uploadFileToS3(pdf,
-//                        "PaymentConfirmation_" + ".pdf");
-////                insuranceService.updateUrlInsurancePayed(insuranceId, url);
-//
-//                String customerEmail = session.getCustomerDetails().getEmail();
-//                emailService.sendEmailWithConfirmationAndAttachment(
-//                        customerEmail,
-//                        "Payment Confirmation",
-//                        "emailTemplatePayed",
-//                        pdf,
-//                        "PaymentConfirmation_" + ".pdf"
+                byte[] pdf = pdfGeneratorService.generatePdf(customer);
+                String url = uploadService.uploadFileToS3(pdf,
+                        "PaymentConfirmation_" + ".pdf");
+                insuranceService.updateStatusOfPaymentAndUrlPayed(insuranceId, url);
 
-//                );
+                String customerEmail = session.getCustomerDetails().getEmail();
+                emailService.sendEmailWithConfirmationAndAttachment(
+                        customerEmail,
+                        "Payment Confirmation",
+                        "emailTemplatePayed",
+                        pdf,
+                        "PaymentConfirmation_" + ".pdf"
+
+                );
 
             }
 

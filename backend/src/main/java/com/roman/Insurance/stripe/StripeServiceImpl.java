@@ -19,7 +19,8 @@ public class StripeServiceImpl implements StripeService {
 
     @Override
     public String createPaymentLink (double amount, String currency,
-                                     String description, UUID insuranceId, UUID mainCustomerId) {
+                                     String description, UUID mainCustomerId,
+                                     UUID insuranceId){
         Stripe.apiKey = secretKey;
         try {
             Price price = Price.create(
@@ -41,8 +42,8 @@ public class StripeServiceImpl implements StripeService {
                                     .setQuantity(1L)
                                     .build()
                     )
-                    .putMetadata("insuranceId", String.valueOf(insuranceId))
                     .putMetadata("mainCustomerId", String.valueOf(mainCustomerId))
+                    .putMetadata("insuranceId", String.valueOf(insuranceId))
                     .build();
 
             PaymentLink paymentLink = PaymentLink.create(params);

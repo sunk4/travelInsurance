@@ -55,4 +55,12 @@ public class InsuranceServiceImpl implements InsuranceService {
         insuranceEntity.setUrlInsurancePreview(url);
         insuranceRepository.save(insuranceEntity);
     }
+
+    @Override
+    public void updateStatusOfPaymentAndUrlPayed (UUID id, String urlPdfPayed) {
+        InsuranceEntity insuranceEntity = getInsuranceEntityById(id);
+        insuranceEntity.setStatusOfPayment(StatusOfPayment.PAID);
+        insuranceEntity.setUrlInsurancePayed(urlPdfPayed);
+        insuranceRepository.save(insuranceEntity);
+    }
 }
