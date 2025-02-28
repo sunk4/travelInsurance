@@ -4,6 +4,8 @@ import com.roman.Insurance.ageCategories.AgeCategoryService;
 import com.roman.Insurance.encryption.EncryptionService;
 import com.roman.Insurance.insurance.InsuranceService;
 import com.roman.Insurance.riskFactor.RiskFactorService;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,8 @@ public class InsuredPersonServiceImpl implements InsuredPersonService {
     private final AgeCategoryService ageCategoryService;
     private final RiskFactorService riskFactorService;
     private final InsuranceService insuranceService;
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public List<UUID> createInsuredPerson (List<InsuredPersonDTO> insuredPersonDTOS, UUID insuranceId) throws Exception {
@@ -35,7 +39,10 @@ public class InsuredPersonServiceImpl implements InsuredPersonService {
             insuredPersonEntities.add(insuredPersonEntity);
         }
 
-        List<InsuredPersonEntity> savedInsuredPersonEntities = insuredPersonRepository.saveAll(insuredPersonEntities);
+        List<InsuredPersonEntity> savedInsuredPersonEntities =
+                insuredPersonRepository.saveAllAndFlush(insuredPersonEntities);
+
+        entityManager.clear();
 
         return savedInsuredPersonEntities.stream().map(InsuredPersonEntity::getId).toList();
     }

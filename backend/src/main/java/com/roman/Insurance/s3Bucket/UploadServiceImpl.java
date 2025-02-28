@@ -12,8 +12,6 @@ import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
-import java.util.UUID;
-
 @Service
 @RequiredArgsConstructor
 public class UploadServiceImpl implements UploadService {
@@ -31,12 +29,7 @@ public class UploadServiceImpl implements UploadService {
     private String awsS3Region;
 
     @Override
-    public void uploadFile (byte[] file) {
-
-    }
-
-    @Override
-    public String uploadFileToS3(byte[] file, String fileName) {
+    public String uploadFileToS3 (byte[] file, String fileName) {
         try {
             AwsBasicCredentials awsCredentials = AwsBasicCredentials.create(awsS3AccessKey, awsS3SecretKey);
 
@@ -45,17 +38,16 @@ public class UploadServiceImpl implements UploadService {
                     .credentialsProvider(StaticCredentialsProvider.create(awsCredentials))
                     .build();
 
-            String uniqueFileName = UUID.randomUUID() + "_" + fileName;
-
             PutObjectRequest putObjectRequest = PutObjectRequest.builder()
                     .bucket(awsS3BucketName)
-                    .key(uniqueFileName)
+                    .key(fileName)
                     .contentType("application/pdf")
                     .build();
 
             s3Client.putObject(putObjectRequest, RequestBody.fromBytes(file));
 
-            return "https://" + awsS3BucketName + ".s3." + awsS3Region + ".amazonaws.com/" + uniqueFileName;
+            return "https://" + awsS3BucketName + ".s3." + awsS3Region +
+                    ".amazonaws.com/" + fileName;
 
         } catch (Exception e) {
             logger.error("Failed to upload file to S3: {}", e.getMessage(), e);

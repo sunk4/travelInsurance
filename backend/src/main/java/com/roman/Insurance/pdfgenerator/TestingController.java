@@ -27,7 +27,7 @@ public class TestingController {
 
     @GetMapping("/pdf/{id}")
     public ResponseEntity<byte[]> generatePdf (@PathVariable UUID id) throws Exception {
-        MainCustomerEntity mainCustomer = mainCustomerService.getCustomerById(id);
+        MainCustomerEntity mainCustomer = mainCustomerService.getCustomerByIdEncrypted(id);
         byte[] pdfBytes = pdfGeneratorService.generatePdf(mainCustomer);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
@@ -38,7 +38,7 @@ public class TestingController {
     @GetMapping("/{id}")
     public ResponseEntity<MainCustomerEntity> ahoj (@PathVariable UUID id) throws Exception {
                 MainCustomerEntity mainCustomer  =
-                        mainCustomerService.getCustomerById(id);
+                        mainCustomerService.getCustomerByIdEncrypted(id);
 
                 return  new ResponseEntity<>(mainCustomer,
                         HttpStatus.ACCEPTED);

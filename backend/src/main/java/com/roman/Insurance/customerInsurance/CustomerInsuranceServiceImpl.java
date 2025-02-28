@@ -2,15 +2,15 @@ package com.roman.Insurance.customerInsurance;
 
 import com.roman.Insurance.calculation.CalculationDto;
 import com.roman.Insurance.calculation.CalculationService;
-import com.roman.Insurance.insurance.InsuranceEntity;
-import com.roman.Insurance.mainCustomer.MainCustomerEntity;
-import com.roman.Insurance.mainCustomer.MainCustomerService;
 import com.roman.Insurance.email.EmailService;
 import com.roman.Insurance.insurance.InsuranceService;
 import com.roman.Insurance.insuredPerson.InsuredPersonService;
+import com.roman.Insurance.mainCustomer.MainCustomerEntity;
+import com.roman.Insurance.mainCustomer.MainCustomerService;
 import com.roman.Insurance.pdfgenerator.PdfGeneratorService;
 import com.roman.Insurance.s3Bucket.UploadService;
 import com.roman.Insurance.stripe.StripeService;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -28,26 +28,24 @@ public class CustomerInsuranceServiceImpl implements CustomerInsuranceService {
     private final UploadService uploadService;
     private final EmailService emailService;
     private final StripeService stripeService;
+
     @Override
     public void createTravelInsurance (CustomerTravelInsuranceRequest customerTravelInsuranceRequest) throws Exception {
         UUID mainCustomerId = customerService.createMainCustomer(customerTravelInsuranceRequest.mainCustomerDto());
-
-
-        CalculationDto calculationDto=
+        CalculationDto calculationDto =
                 calculationService.calculatePrice(customerTravelInsuranceRequest);
         UUID insuranceId =
                 insuranceService.createInsurance(customerTravelInsuranceRequest.insuranceDTO(), mainCustomerId, calculationDto.totalCalculatedPrice());
 
         List<UUID> insuredPersonIds =
                 insurePersonService.createInsuredPerson(customerTravelInsuranceRequest.insuredPersonDTO(), insuranceId);
-
-        MainCustomerEntity mainCustomer = customerService.getCustomerById(mainCustomerId);
-
-
+        MainCustomerEntity mainCustomer = customerService.getCustomerByIdEncrypted(mainCustomerId);
 
 
         byte[] generatedPdf = pdfGeneratorService.generatePdf(mainCustomer);
-        //uploadService
+        String pdfUrl = uploadService.uploadFileToS3(generatedPdf,
+                mainCustomerId.toString() +
+                        mainCustomer.getLastName() + mainCustomer.getFirstName());
         //generate stripe link
 
     }

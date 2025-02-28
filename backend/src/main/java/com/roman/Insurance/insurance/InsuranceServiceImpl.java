@@ -2,11 +2,11 @@ package com.roman.Insurance.insurance;
 
 import com.roman.Insurance.country.CountryEntity;
 import com.roman.Insurance.country.CountryService;
-import com.roman.Insurance.mainCustomer.MainCustomerEntity;
-import com.roman.Insurance.mainCustomer.MainCustomerService;
 import com.roman.Insurance.enums.StatusOfPayment;
 import com.roman.Insurance.insuranceType.InsuranceTypeEntity;
 import com.roman.Insurance.insuranceType.InsuranceTypeService;
+import com.roman.Insurance.mainCustomer.MainCustomerEntity;
+import com.roman.Insurance.mainCustomer.MainCustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +22,12 @@ public class InsuranceServiceImpl implements InsuranceService {
     private final CountryService countryService;
     private final InsuranceTypeService insuranceTypeService;
 
-
     @Override
-    public UUID createInsurance (InsuranceDTO insuranceDTO,
-                                 UUID mainCustomerId,double totalPrice) throws Exception {
+    public UUID createInsurance (
+            InsuranceDTO insuranceDTO,
+            UUID mainCustomerId, double totalPrice
+    ) throws Exception {
+
         MainCustomerEntity customerEntity = mainCustomerService.getCustomerById(mainCustomerId);
         CountryEntity countryEntity =
                 countryService.findCountryEntityById(insuranceDTO.countryId());
