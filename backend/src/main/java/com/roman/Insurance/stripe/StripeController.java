@@ -46,6 +46,8 @@ public class StripeController {
             Event event = Webhook.constructEvent(payload, sigHeader,
                     webhookSecret);
 
+
+
             if ("checkout.session.completed".equals(event.getType())) {
                 Session session = (Session) event.getDataObjectDeserializer()
                         .getObject()
