@@ -5,6 +5,7 @@ import com.roman.Insurance.country.response.CountryResponse;
 import com.roman.Insurance.customerInsurance.request.CustomerTravelInsuranceRequest;
 import com.roman.Insurance.insuranceType.response.InsuranceTypeResponse;
 import com.roman.Insurance.utils.DateUtilsService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,7 @@ public class InsuranceTypeServiceImpl implements InsuranceTypeService {
 
     @Override
     public InsuranceTypeResponse getInsuranceTypeById (UUID id) {
-        InsuranceTypeEntity insuranceTypeEntity = insuranceTypeRepository.findById(id).orElseThrow(() -> new RuntimeException("Insurance type not found"));
+        InsuranceTypeEntity insuranceTypeEntity = insuranceTypeRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Insurance type not found"));
 
         return insuranceTypeMapper.toDto(insuranceTypeEntity);
     }

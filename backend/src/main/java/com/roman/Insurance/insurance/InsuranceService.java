@@ -8,7 +8,7 @@ public interface InsuranceService {
 
     UUID createInsurance (
             InsuranceRequest insuranceRequest, UUID mainCustomerId,
-            double totalPrice) throws Exception;
+            double totalPrice);
     InsuranceEntity getInsuranceEntityById (UUID id);
     void updateUrlPreview (UUID id,String url);
     void updateStatusOfPaymentAndUrlPayed (UUID id, String urlPdfPayed);

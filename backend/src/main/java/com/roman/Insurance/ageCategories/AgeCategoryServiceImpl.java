@@ -1,6 +1,7 @@
 package com.roman.Insurance.ageCategories;
 
 import com.roman.Insurance.ageCategories.response.AgeCategoryResponse;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,11 +21,11 @@ public class AgeCategoryServiceImpl implements AgeCategoryService {
 
     @Override
     public AgeCategoryResponse getAgeCategoryById (UUID id) {
-        return ageCategoryMapper.toDto(ageCategoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Age category not found")));
+        return ageCategoryMapper.toDto(ageCategoryRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Age category not found")));
     }
 
     @Override
     public AgeCategoryEntity getAgeCategoryEntityById (UUID id) {
-        return ageCategoryRepository.findById(id).orElseThrow(() -> new RuntimeException("Age category not found"));
+        return ageCategoryRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Age category not found"));
     }
 }

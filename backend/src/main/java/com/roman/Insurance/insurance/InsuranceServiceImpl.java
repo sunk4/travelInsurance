@@ -8,6 +8,7 @@ import com.roman.Insurance.insuranceType.InsuranceTypeEntity;
 import com.roman.Insurance.insuranceType.InsuranceTypeService;
 import com.roman.Insurance.mainCustomer.MainCustomerEntity;
 import com.roman.Insurance.mainCustomer.MainCustomerService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +28,7 @@ public class InsuranceServiceImpl implements InsuranceService {
     public UUID createInsurance (
             InsuranceRequest insuranceRequest,
             UUID mainCustomerId, double totalPrice
-    ) throws Exception {
+    )  {
 
         MainCustomerEntity customerEntity = mainCustomerService.getCustomerById(mainCustomerId);
         CountryEntity countryEntity =
@@ -47,7 +48,7 @@ public class InsuranceServiceImpl implements InsuranceService {
 
     @Override
     public InsuranceEntity getInsuranceEntityById (UUID id) {
-        return insuranceRepository.findById(id).orElseThrow(() -> new RuntimeException("Insurance not found"));
+        return insuranceRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Insurance not found"));
     }
 
     @Override

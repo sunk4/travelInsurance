@@ -6,6 +6,7 @@ import com.roman.Insurance.coverageRegions.response.CoverageRegionResponse;
 import com.roman.Insurance.customerInsurance.request.CustomerTravelInsuranceRequest;
 import com.roman.Insurance.riskFactor.RiskFactorService;
 import com.roman.Insurance.utils.DateUtilsService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -31,19 +32,21 @@ public class CountryServiceImpl implements CountryService {
     @Override
     public CountryResponse findCountryById (UUID id) {
         CountryEntity countryEntity =
-                countryRepository.findById(id).orElseThrow(() -> new RuntimeException("Country not found"));
+                countryRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(
+                        "Country not found"));
         return countryMapper.countryEntityToCountryDto(countryEntity);
     }
 
     @Override
     public CountryEntity findCountryEntityById (UUID id) {
-        return countryRepository.findById(id).orElseThrow(() -> new RuntimeException("Country not found"));
+        return countryRepository.findById(id).orElseThrow(() -> new EntityNotFoundException(
+                "Country not found"));
     }
 
     @Override
     public CountryResponse findCountryByIdAndCalculatedPriceByRiskFactorDateAgeCategory (CustomerTravelInsuranceRequest customerTravelInsuranceRequest) {
         CountryEntity countryEntity =
-                countryRepository.findById(customerTravelInsuranceRequest.insuranceRequest().countryId()).orElseThrow(() -> new RuntimeException("Country not found"));
+                countryRepository.findById(customerTravelInsuranceRequest.insuranceRequest().countryId()).orElseThrow(() -> new EntityNotFoundException("Country not found"));
 
         CountryResponse countryResponse = countryMapper.countryEntityToCountryDto(countryEntity);
         double basePricePerDay = countryResponse.coverageRegion().basePricePerDay();
