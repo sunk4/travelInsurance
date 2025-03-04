@@ -1,9 +1,9 @@
-package com.roman.Insurance.ageCategories;
+package com.roman.Insurance.ageCategories.response;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public record AgeCategoryDto(
+public record AgeCategoryResponse(
         UUID id,
         String name,
         Integer minAge,

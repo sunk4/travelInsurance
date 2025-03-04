@@ -60,7 +60,7 @@ public class InsuredPersonEntity {
     private AgeCategoryEntity ageCategory;
 
     @ManyToOne
-    @JoinColumn(name= "risk_factor_id", nullable = false)
+    @JoinColumn(name = "risk_factor_id", nullable = false)
     @NotNull(message = "Risk factor is required")
 
     private RiskFactorEntity riskFactor;

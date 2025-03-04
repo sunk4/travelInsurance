@@ -1,7 +1,6 @@
 package com.roman.Insurance.coverageRegions;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.roman.Insurance.country.CountryEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;

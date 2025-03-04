@@ -1,9 +1,9 @@
-package com.roman.Insurance.insuranceType;
+package com.roman.Insurance.insuranceType.response;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public record InsuranceTypeDto
+public record InsuranceTypeResponse
         (UUID id,
          String name,
          String description,
@@ -13,8 +13,8 @@ public record InsuranceTypeDto
          Boolean isPriceTotal,
          LocalDateTime createdAt,
          LocalDateTime updatedAt) {
-    public InsuranceTypeDto withTotalCalculatedPrice (double totalCalculatedPrice) {
-        return new InsuranceTypeDto(id, name, description, basePricePerDay,
+    public InsuranceTypeResponse withTotalCalculatedPrice (double totalCalculatedPrice) {
+        return new InsuranceTypeResponse(id, name, description, basePricePerDay,
                 totalCalculatedPrice, isAdditionalInsurance, isPriceTotal,
                 createdAt,
                 updatedAt);

@@ -14,7 +14,7 @@ public class EncryptionUtil {
     @Value("${encryption.secret.key}")
     private String secretKey;
 
-    public String encrypt(String data) throws Exception {
+    public String encrypt (String data) throws Exception {
         SecretKeySpec keySpec = new SecretKeySpec(secretKey.getBytes(), ALGORITHM);
         Cipher cipher = Cipher.getInstance(ALGORITHM);
         cipher.init(Cipher.ENCRYPT_MODE, keySpec);
@@ -22,8 +22,7 @@ public class EncryptionUtil {
         return Base64.getEncoder().encodeToString(encryptedBytes);
     }
 
-
-    public String decrypt(String encryptedData) throws Exception {
+    public String decrypt (String encryptedData) throws Exception {
         SecretKeySpec keySpec = new SecretKeySpec(secretKey.getBytes(), ALGORITHM);
         Cipher cipher = Cipher.getInstance(ALGORITHM);
         cipher.init(Cipher.DECRYPT_MODE, keySpec);

@@ -3,6 +3,8 @@ package com.roman.Insurance.insuredPerson;
 import com.roman.Insurance.ageCategories.AgeCategoryService;
 import com.roman.Insurance.encryption.EncryptionService;
 import com.roman.Insurance.insurance.InsuranceService;
+import com.roman.Insurance.insuredPerson.request.InsuredPersonRequest;
+import com.roman.Insurance.insuredPerson.response.InsuredPersonResponse;
 import com.roman.Insurance.riskFactor.RiskFactorService;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -26,16 +28,18 @@ public class InsuredPersonServiceImpl implements InsuredPersonService {
     private EntityManager entityManager;
 
     @Override
-    public void createInsuredPerson (List<InsuredPersonDTO> insuredPersonDTOS,
-                                  UUID insuranceId) throws Exception {
+    public void createInsuredPerson (
+            List<InsuredPersonRequest> insuredPersonRequests,
+            UUID insuranceId
+    ) throws Exception {
 
         List<InsuredPersonEntity> insuredPersonEntities = new ArrayList<>();
 
-        for (InsuredPersonDTO insuredPersonDTO : insuredPersonDTOS) {
-            InsuredPersonEntity insuredPersonEntity = insuredPersonMapper.toEntity(insuredPersonDTO);
+        for (InsuredPersonRequest insuredPersonRequest : insuredPersonRequests) {
+            InsuredPersonEntity insuredPersonEntity = insuredPersonMapper.toEntity(insuredPersonRequest);
             insuredPersonEntity = encryptionService.encrypt(insuredPersonEntity);
-            insuredPersonEntity.setAgeCategory(ageCategoryService.getAgeCategoryEntityById(insuredPersonDTO.ageCategory().id()));
-            insuredPersonEntity.setRiskFactor(riskFactorService.getRiskFactorEntityById(insuredPersonDTO.riskFactor().id()));
+            insuredPersonEntity.setAgeCategory(ageCategoryService.getAgeCategoryEntityById(insuredPersonRequest.ageCategory().id()));
+            insuredPersonEntity.setRiskFactor(riskFactorService.getRiskFactorEntityById(insuredPersonRequest.riskFactor().id()));
             insuredPersonEntity.setInsurance(insuranceService.getInsuranceEntityById(insuranceId));
             insuredPersonEntities.add(insuredPersonEntity);
         }
@@ -48,9 +52,9 @@ public class InsuredPersonServiceImpl implements InsuredPersonService {
     }
 
     @Override
-    public List<InsuredPersonDTO> getInsuredPersons (List<InsuredPersonDTO> insuredPersonsDTO) {
-        return insuredPersonsDTO.stream().map(person ->
-                new InsuredPersonDTO(
+    public List<InsuredPersonResponse> getInsuredPersons (List<InsuredPersonRequest> insuredPersons) {
+        return insuredPersons.stream().map(person ->
+                new InsuredPersonResponse(
                         person.id(),
                         person.firstName(),
                         person.lastName(),

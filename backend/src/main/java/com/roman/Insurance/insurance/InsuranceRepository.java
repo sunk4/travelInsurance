@@ -4,5 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface InsuranceRepo extends JpaRepository<InsuranceEntity, UUID> {
+public interface InsuranceRepository extends JpaRepository<InsuranceEntity,
+        UUID> {
 }

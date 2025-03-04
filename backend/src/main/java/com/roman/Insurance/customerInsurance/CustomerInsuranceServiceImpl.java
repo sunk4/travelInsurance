@@ -1,7 +1,8 @@
 package com.roman.Insurance.customerInsurance;
 
-import com.roman.Insurance.calculation.CalculationDto;
 import com.roman.Insurance.calculation.CalculationService;
+import com.roman.Insurance.calculation.response.CalculationResponse;
+import com.roman.Insurance.customerInsurance.request.CustomerTravelInsuranceRequest;
 import com.roman.Insurance.email.EmailService;
 import com.roman.Insurance.insurance.InsuranceService;
 import com.roman.Insurance.insuredPerson.InsuredPersonService;
@@ -14,7 +15,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -32,13 +32,13 @@ public class CustomerInsuranceServiceImpl implements CustomerInsuranceService {
     @Override
     @Transactional
     public void createTravelInsurance (CustomerTravelInsuranceRequest customerTravelInsuranceRequest) throws Exception {
-        UUID mainCustomerId = customerService.createMainCustomer(customerTravelInsuranceRequest.mainCustomerDto());
-        CalculationDto calculationDto =
+        UUID mainCustomerId = customerService.createMainCustomer(customerTravelInsuranceRequest.mainCustomerRequest());
+        CalculationResponse calculationDto =
                 calculationService.calculatePrice(customerTravelInsuranceRequest);
         UUID insuranceId =
-                insuranceService.createInsurance(customerTravelInsuranceRequest.insuranceDTO(), mainCustomerId, calculationDto.totalCalculatedPrice());
+                insuranceService.createInsurance(customerTravelInsuranceRequest.insuranceRequest(), mainCustomerId, calculationDto.totalCalculatedPrice());
 
-                insurePersonService.createInsuredPerson(customerTravelInsuranceRequest.insuredPersonDTO(), insuranceId);
+        insurePersonService.createInsuredPerson(customerTravelInsuranceRequest.insuredPersonRequest(), insuranceId);
         MainCustomerEntity mainCustomer = customerService.getCustomerByIdEncrypted(mainCustomerId);
 
         byte[] generatedPdf = pdfGeneratorService.generatePdf(mainCustomer);
@@ -51,12 +51,11 @@ public class CustomerInsuranceServiceImpl implements CustomerInsuranceService {
         double totalPrice = mainCustomer.getInsurances().get(0).getTotalPrice();
         String description = mainCustomer.getEmail();
 
-        String paymentLink = stripeService.createPaymentLink(totalPrice,"EUR"
+        String paymentLink = stripeService.createPaymentLink(totalPrice, "EUR"
                 , description, mainCustomerId, insuranceId);
 
-      emailService.sendEmailWithGeneratedAttachment(mainCustomer.getEmail(),
-              paymentLink,"Travel Insurance", "emailTemplate", generatedPdf, mainCustomer.getLastName() + mainCustomer.getFirstName() + ".pdf");
-
+        emailService.sendEmailWithGeneratedAttachment(mainCustomer.getEmail(),
+                paymentLink, "Travel Insurance", "emailTemplate", generatedPdf, mainCustomer.getLastName() + mainCustomer.getFirstName() + ".pdf");
 
     }
 }

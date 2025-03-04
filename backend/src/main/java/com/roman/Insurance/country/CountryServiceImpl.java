@@ -1,8 +1,9 @@
 package com.roman.Insurance.country;
 
 import com.roman.Insurance.ageCategories.AgeCategoryService;
-import com.roman.Insurance.coverageRegions.CoverageRegionDto;
-import com.roman.Insurance.customerInsurance.CustomerTravelInsuranceRequest;
+import com.roman.Insurance.country.response.CountryResponse;
+import com.roman.Insurance.coverageRegions.response.CoverageRegionResponse;
+import com.roman.Insurance.customerInsurance.request.CustomerTravelInsuranceRequest;
 import com.roman.Insurance.riskFactor.RiskFactorService;
 import com.roman.Insurance.utils.DateUtilsService;
 import lombok.RequiredArgsConstructor;
@@ -21,14 +22,14 @@ public class CountryServiceImpl implements CountryService {
     private final AgeCategoryService ageCategoryService;
 
     @Override
-    public List<CountryDto> findAllCountries () {
+    public List<CountryResponse> findAllCountries () {
         List<CountryEntity> countryEntities = countryRepository.findAll();
 
         return countryMapper.entityListToDto(countryEntities);
     }
 
     @Override
-    public CountryDto findCountryById (UUID id) {
+    public CountryResponse findCountryById (UUID id) {
         CountryEntity countryEntity =
                 countryRepository.findById(id).orElseThrow(() -> new RuntimeException("Country not found"));
         return countryMapper.countryEntityToCountryDto(countryEntity);
@@ -40,20 +41,19 @@ public class CountryServiceImpl implements CountryService {
     }
 
     @Override
-    public CountryDto findCountryByIdAndCalculatedPriceByRiskFactorDateAgeCategory (CustomerTravelInsuranceRequest customerTravelInsuranceRequest) {
+    public CountryResponse findCountryByIdAndCalculatedPriceByRiskFactorDateAgeCategory (CustomerTravelInsuranceRequest customerTravelInsuranceRequest) {
         CountryEntity countryEntity =
-                countryRepository.findById(customerTravelInsuranceRequest.insuranceDTO().countryId()).orElseThrow(() -> new RuntimeException("Country not found"));
+                countryRepository.findById(customerTravelInsuranceRequest.insuranceRequest().countryId()).orElseThrow(() -> new RuntimeException("Country not found"));
 
-        CountryDto countryDto = countryMapper.countryEntityToCountryDto(countryEntity);
-        double basePricePerDay = countryDto.coverageRegion().basePricePerDay();
+        CountryResponse countryResponse = countryMapper.countryEntityToCountryDto(countryEntity);
+        double basePricePerDay = countryResponse.coverageRegion().basePricePerDay();
         double totalCalculatedPrice = 0.0;
+        for (int i = 0; i < customerTravelInsuranceRequest.insuredPersonRequest().size(); i++) {
 
-
-        for (int i = 0; i < customerTravelInsuranceRequest.insuredPersonDTO().size(); i++) {
             UUID ageCategoryId =
-                    customerTravelInsuranceRequest.insuredPersonDTO().get(i).ageCategory().id();
+                    customerTravelInsuranceRequest.insuredPersonRequest().get(i).ageCategory().id();
             UUID riskFactorId =
-                    customerTravelInsuranceRequest.insuredPersonDTO().get(i).riskFactor().id();
+                    customerTravelInsuranceRequest.insuredPersonRequest().get(i).riskFactor().id();
 
             double priceFactorAgeCategory =
                     ageCategoryService.getAgeCategoryById(ageCategoryId).priceFactor();
@@ -67,19 +67,19 @@ public class CountryServiceImpl implements CountryService {
         }
 
         long days =
-                dateUtilsService.calculateDateDifferenceInDays(customerTravelInsuranceRequest.insuranceDTO().startDate(), customerTravelInsuranceRequest.insuranceDTO().endDate());
+                dateUtilsService.calculateDateDifferenceInDays(customerTravelInsuranceRequest.insuranceRequest().startDate(), customerTravelInsuranceRequest.insuranceRequest().endDate());
 
         totalCalculatedPrice *= days;
 
-        CoverageRegionDto countryWithCalculatedPrice =
-                countryDto.coverageRegion().withTotalCalculatedPrice(Math.round(totalCalculatedPrice * 100.0) / 100.0);
+        CoverageRegionResponse countryWithCalculatedPrice =
+                countryResponse.coverageRegion().withTotalCalculatedPrice(Math.round(totalCalculatedPrice * 100.0) / 100.0);
 
-        return new CountryDto(countryDto.id(), countryDto.name(),
+        return new CountryResponse(countryResponse.id(), countryResponse.name(),
                 countryWithCalculatedPrice, days,
-                customerTravelInsuranceRequest.insuranceDTO().startDate(),
-                customerTravelInsuranceRequest.insuranceDTO().endDate() ,
-                countryDto.createdAt(),
-                countryDto.updatedAt());
+                customerTravelInsuranceRequest.insuranceRequest().startDate(),
+                customerTravelInsuranceRequest.insuranceRequest().endDate(),
+                countryResponse.createdAt(),
+                countryResponse.updatedAt());
 
     }
 

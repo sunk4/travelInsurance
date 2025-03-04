@@ -1,7 +1,7 @@
 package com.roman.Insurance.encryption;
 
-import com.roman.Insurance.mainCustomer.MainCustomerEntity;
 import com.roman.Insurance.insuredPerson.InsuredPersonEntity;
+import com.roman.Insurance.mainCustomer.MainCustomerEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class EncryptionServiceImpl implements EncryptionService {
     private final EncryptionUtil encryption;
 
     @Override
-    public MainCustomerEntity encrypt(MainCustomerEntity customerEntity) throws Exception {
+    public MainCustomerEntity encrypt (MainCustomerEntity customerEntity) throws Exception {
         if (customerEntity.getFirstName() != null) {
             customerEntity.setEncryptedFirstName(encryption.encrypt(customerEntity.getFirstName()));
         }
@@ -46,7 +46,7 @@ public class EncryptionServiceImpl implements EncryptionService {
     }
 
     @Override
-    public MainCustomerEntity decrypt(MainCustomerEntity customerEntity) throws Exception {
+    public MainCustomerEntity decrypt (MainCustomerEntity customerEntity) throws Exception {
         if (customerEntity.getEncryptedFirstName() != null) {
             customerEntity.setFirstName(encryption.decrypt(customerEntity.getEncryptedFirstName()));
         }
@@ -80,13 +80,13 @@ public class EncryptionServiceImpl implements EncryptionService {
     @Override
     public InsuredPersonEntity encrypt (InsuredPersonEntity insuredPersonEntity) throws Exception {
 
-        if(insuredPersonEntity.getFirstName() != null) {
+        if (insuredPersonEntity.getFirstName() != null) {
             insuredPersonEntity.setEncryptedFistName(encryption.encrypt(insuredPersonEntity.getFirstName()));
         }
-        if(insuredPersonEntity.getLastName() != null) {
+        if (insuredPersonEntity.getLastName() != null) {
             insuredPersonEntity.setEncryptedLastName(encryption.encrypt(insuredPersonEntity.getLastName()));
         }
-        if(insuredPersonEntity.getDateOfBirth() != null) {
+        if (insuredPersonEntity.getDateOfBirth() != null) {
             insuredPersonEntity.setEncryptedDateOfBirth(encryption.encrypt(insuredPersonEntity.getDateOfBirth().toString()));
         }
         return insuredPersonEntity;
@@ -95,13 +95,13 @@ public class EncryptionServiceImpl implements EncryptionService {
     @Override
     public InsuredPersonEntity decrypt (InsuredPersonEntity insuredPersonEntity) throws Exception {
 
-        if(insuredPersonEntity.getEncryptedFistName() != null) {
+        if (insuredPersonEntity.getEncryptedFistName() != null) {
             insuredPersonEntity.setFirstName(encryption.decrypt(insuredPersonEntity.getEncryptedFistName()));
         }
-        if(insuredPersonEntity.getEncryptedLastName() != null) {
+        if (insuredPersonEntity.getEncryptedLastName() != null) {
             insuredPersonEntity.setLastName(encryption.decrypt(insuredPersonEntity.getEncryptedLastName()));
         }
-        if(insuredPersonEntity.getEncryptedDateOfBirth() != null) {
+        if (insuredPersonEntity.getEncryptedDateOfBirth() != null) {
             insuredPersonEntity.setDateOfBirth(LocalDate.parse(encryption.decrypt(insuredPersonEntity.getEncryptedDateOfBirth())));
         }
         return insuredPersonEntity;

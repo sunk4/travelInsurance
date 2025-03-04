@@ -1,5 +1,6 @@
 package com.roman.Insurance.customerInsurance;
 
+import com.roman.Insurance.customerInsurance.request.CustomerTravelInsuranceRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,12 +1,14 @@
 package com.roman.Insurance.ageCategories;
 
+import com.roman.Insurance.ageCategories.response.AgeCategoryResponse;
+
 import java.util.List;
 import java.util.UUID;
 
 public interface AgeCategoryService {
-    List<AgeCategoryDto> getAllAgeCategories ();
+    List<AgeCategoryResponse> getAllAgeCategories ();
 
-    AgeCategoryDto getAgeCategoryById (UUID id);
+    AgeCategoryResponse getAgeCategoryById (UUID id);
     AgeCategoryEntity getAgeCategoryEntityById (UUID id);
 
 }

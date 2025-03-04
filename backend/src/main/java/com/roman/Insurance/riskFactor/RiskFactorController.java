@@ -1,5 +1,6 @@
 package com.roman.Insurance.riskFactor;
 
+import com.roman.Insurance.riskFactor.response.RiskFactorResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,13 +19,14 @@ public class RiskFactorController {
     private final RiskFactorService riskFactorService;
 
     @GetMapping
-    public ResponseEntity<List<RiskFactorDto>> findAllRiskFactors () {
-        List<RiskFactorDto> riskFactors = riskFactorService.findAllRiskFactors();
+    public ResponseEntity<List<RiskFactorResponse>> findAllRiskFactors () {
+        List<RiskFactorResponse> riskFactors = riskFactorService.findAllRiskFactors();
         return new ResponseEntity<>(riskFactors, HttpStatus.OK);
     }
+
     @GetMapping("/{id}")
-    public ResponseEntity<RiskFactorDto> findRiskFactorById(@PathVariable UUID id) {
-        RiskFactorDto riskFactor = riskFactorService.getRiskFactorById(id);
+    public ResponseEntity<RiskFactorResponse> findRiskFactorById (@PathVariable UUID id) {
+        RiskFactorResponse riskFactor = riskFactorService.getRiskFactorById(id);
         return new ResponseEntity<>(riskFactor, HttpStatus.OK);
     }
 }

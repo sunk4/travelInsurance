@@ -1,5 +1,6 @@
 package com.roman.Insurance.riskFactor;
 
+import com.roman.Insurance.riskFactor.response.RiskFactorResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ public class RiskFactorServiceImpl implements RiskFactorService {
     private final RiskFactorMapper riskFactorMapper;
 
     @Override
-    public List<RiskFactorDto> findAllRiskFactors () {
+    public List<RiskFactorResponse> findAllRiskFactors () {
 
         List<RiskFactorEntity> riskFactorEntities = riskFactorRepository.findAll();
         return riskFactorMapper.entityListToDto(riskFactorEntities);
@@ -21,7 +22,7 @@ public class RiskFactorServiceImpl implements RiskFactorService {
     }
 
     @Override
-    public RiskFactorDto getRiskFactorById (UUID id) {
+    public RiskFactorResponse getRiskFactorById (UUID id) {
         RiskFactorEntity riskFactor = riskFactorRepository.findById(id).orElseThrow(() -> new RuntimeException("Risk factor not found"));
 
         return riskFactorMapper.toDto(riskFactor);

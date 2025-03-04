@@ -1,15 +1,15 @@
-package com.roman.Insurance.country;
+package com.roman.Insurance.country.response;
 
-import com.roman.Insurance.coverageRegions.CoverageRegionDto;
+import com.roman.Insurance.coverageRegions.response.CoverageRegionResponse;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public record CountryDto(
+public record CountryResponse(
         UUID id,
         String name,
-        CoverageRegionDto coverageRegion,
+        CoverageRegionResponse coverageRegion,
         long days,
         LocalDate startDate,
         LocalDate endDate,

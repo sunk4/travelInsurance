@@ -4,5 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
 
-public interface RiskFactorRepository  extends JpaRepository<RiskFactorEntity, UUID> {
+public interface RiskFactorRepository extends JpaRepository<RiskFactorEntity, UUID> {
 }

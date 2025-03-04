@@ -1,8 +1,9 @@
 package com.roman.Insurance.calculation;
 
-import com.roman.Insurance.customerInsurance.CustomerTravelInsuranceRequest;
+import com.roman.Insurance.calculation.response.CalculationResponse;
+import com.roman.Insurance.customerInsurance.request.CustomerTravelInsuranceRequest;
 
 public interface CalculationService {
-    CalculationDto calculatePrice (CustomerTravelInsuranceRequest customerTravelInsuranceRequest);
-    double calculatePriceTotal (CustomerTravelInsuranceRequest customerTravelInsuranceRequest);
+    CalculationResponse calculatePrice (CustomerTravelInsuranceRequest customerTravelInsuranceRequest);
+
 }

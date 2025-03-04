@@ -1,8 +1,9 @@
 package com.roman.Insurance.insuranceType;
 
-import com.roman.Insurance.calculation.InsuranceCalculationResponse;
-import com.roman.Insurance.country.CountryDto;
-import com.roman.Insurance.customerInsurance.CustomerTravelInsuranceRequest;
+import com.roman.Insurance.calculation.response.InsuranceCalculationResponse;
+import com.roman.Insurance.country.response.CountryResponse;
+import com.roman.Insurance.customerInsurance.request.CustomerTravelInsuranceRequest;
+import com.roman.Insurance.insuranceType.response.InsuranceTypeResponse;
 import com.roman.Insurance.utils.DateUtilsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,13 +19,13 @@ public class InsuranceTypeServiceImpl implements InsuranceTypeService {
     private final DateUtilsService dateUtilsService;
 
     @Override
-    public List<InsuranceTypeDto> getAllInsuranceTypes () {
+    public List<InsuranceTypeResponse> getAllInsuranceTypes () {
         List<InsuranceTypeEntity> insuranceTypes = insuranceTypeRepository.findAll();
         return insuranceTypeMapper.entityListToDto(insuranceTypes);
     }
 
     @Override
-    public InsuranceTypeDto getInsuranceTypeById (UUID id) {
+    public InsuranceTypeResponse getInsuranceTypeById (UUID id) {
         InsuranceTypeEntity insuranceTypeEntity = insuranceTypeRepository.findById(id).orElseThrow(() -> new RuntimeException("Insurance type not found"));
 
         return insuranceTypeMapper.toDto(insuranceTypeEntity);
@@ -37,15 +38,15 @@ public class InsuranceTypeServiceImpl implements InsuranceTypeService {
     }
 
     @Override
-    public List<InsuranceTypeDto> getAllCalculatedInsuranceTypesByDates (CustomerTravelInsuranceRequest customerTravelInsuranceRequest) {
+    public List<InsuranceTypeResponse> getAllCalculatedInsuranceTypesByDates (CustomerTravelInsuranceRequest customerTravelInsuranceRequest) {
         long days =
-                dateUtilsService.calculateDateDifferenceInDays(customerTravelInsuranceRequest.insuranceDTO().startDate(),
-                        customerTravelInsuranceRequest.insuranceDTO().endDate());
+                dateUtilsService.calculateDateDifferenceInDays(customerTravelInsuranceRequest.insuranceRequest().startDate(),
+                        customerTravelInsuranceRequest.insuranceRequest().endDate());
         int amountOfPeople =
-                customerTravelInsuranceRequest.insuredPersonDTO().size();
+                customerTravelInsuranceRequest.insuredPersonRequest().size();
 
         List<InsuranceTypeEntity> insuranceTypes = insuranceTypeRepository.findAll();
-        List<InsuranceTypeDto> insuranceTypeDtos = insuranceTypeMapper.entityListToDto(insuranceTypes);
+        List<InsuranceTypeResponse> insuranceTypeDtos = insuranceTypeMapper.entityListToDto(insuranceTypes);
 
         return insuranceTypeDtos.stream().map(insuranceTypeDto -> {
             double totalCalculatedPrice;
@@ -63,11 +64,11 @@ public class InsuranceTypeServiceImpl implements InsuranceTypeService {
     }
 
     @Override
-    public InsuranceCalculationResponse getPickedInsuranceTypes (CustomerTravelInsuranceRequest customerTravelInsuranceRequest, List<InsuranceTypeDto> insuranceTypes, CountryDto countryDto) {
-        List<InsuranceTypeDto> pickedInsuranceTypesByUser =
-                insuranceTypes.stream().filter(insuranceTypeDto -> customerTravelInsuranceRequest.insuranceDTO().insuranceTypeIds().contains(insuranceTypeDto.id())).toList();
+    public InsuranceCalculationResponse getPickedInsuranceTypes (CustomerTravelInsuranceRequest customerTravelInsuranceRequest, List<InsuranceTypeResponse> insuranceTypes, CountryResponse countryResponse) {
+        List<InsuranceTypeResponse> pickedInsuranceTypesByUser =
+                insuranceTypes.stream().filter(insuranceTypeDto -> customerTravelInsuranceRequest.insuranceRequest().insuranceTypeIds().contains(insuranceTypeDto.id())).toList();
         double totalCalculatedPrice =
-                pickedInsuranceTypesByUser.stream().mapToDouble(InsuranceTypeDto::totalCalculatedPrice).sum() + countryDto.coverageRegion().totalCalculatedPrice();
+                pickedInsuranceTypesByUser.stream().mapToDouble(InsuranceTypeResponse::totalCalculatedPrice).sum() + countryResponse.coverageRegion().totalCalculatedPrice();
         return new InsuranceCalculationResponse(pickedInsuranceTypesByUser, totalCalculatedPrice);
     }
 }

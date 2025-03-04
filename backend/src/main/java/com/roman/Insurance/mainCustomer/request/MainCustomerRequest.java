@@ -1,4 +1,4 @@
-package com.roman.Insurance.mainCustomer;
+package com.roman.Insurance.mainCustomer.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -6,9 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public record MainCustomerDto(
-        UUID id,
-
+public record MainCustomerRequest(
         @NotBlank(message = "First name is required")
         String firstName,
 
@@ -35,11 +33,8 @@ public record MainCustomerDto(
         String zipCode,
 
         @NotBlank(message = "Personal identification number is required")
-        String personalIdentificationNumber,
+        String personalIdentificationNumber
 
 
-        LocalDateTime createdAt,
-
-        LocalDateTime updatedAt
 ) {
 }

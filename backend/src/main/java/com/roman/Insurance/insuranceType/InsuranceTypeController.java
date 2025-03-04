@@ -1,10 +1,13 @@
 package com.roman.Insurance.insuranceType;
 
+import com.roman.Insurance.insuranceType.response.InsuranceTypeResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -15,14 +18,14 @@ public class InsuranceTypeController {
     private final InsuranceTypeService insuranceTypeService;
 
     @GetMapping
-    public ResponseEntity<List<InsuranceTypeDto>> getAllInsuranceTypes () {
-        List<InsuranceTypeDto> insuranceTypes = insuranceTypeService.getAllInsuranceTypes();
+    public ResponseEntity<List<InsuranceTypeResponse>> getAllInsuranceTypes () {
+        List<InsuranceTypeResponse> insuranceTypes = insuranceTypeService.getAllInsuranceTypes();
         return ResponseEntity.ok(insuranceTypes);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<InsuranceTypeDto> getInsuranceTypeById (@PathVariable UUID id) {
-        InsuranceTypeDto insuranceType = insuranceTypeService.getInsuranceTypeById(id);
+    public ResponseEntity<InsuranceTypeResponse> getInsuranceTypeById (@PathVariable UUID id) {
+        InsuranceTypeResponse insuranceType = insuranceTypeService.getInsuranceTypeById(id);
         return ResponseEntity.ok(insuranceType);
     }
 

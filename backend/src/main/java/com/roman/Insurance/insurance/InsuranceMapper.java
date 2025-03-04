@@ -1,5 +1,7 @@
 package com.roman.Insurance.insurance;
 
+import com.roman.Insurance.insurance.request.InsuranceRequest;
+import com.roman.Insurance.insurance.response.InsuranceResponse;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -7,10 +9,10 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface InsuranceMapper {
 
-    InsuranceEntity toEntity (InsuranceDTO insuranceDTO);
+    InsuranceEntity toEntity (InsuranceRequest insuranceRequest);
 
-    InsuranceDTO toDto (InsuranceEntity insuranceEntity);
+    InsuranceResponse toDto (InsuranceEntity insuranceEntity);
 
-    List<InsuranceDTO> entityListToDto (List<InsuranceEntity> insuranceEntities);
+    List<InsuranceRequest> entityListToDto (List<InsuranceEntity> insuranceEntities);
 
 }

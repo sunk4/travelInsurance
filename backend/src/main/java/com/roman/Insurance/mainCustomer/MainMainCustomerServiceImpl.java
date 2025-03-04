@@ -1,13 +1,12 @@
 package com.roman.Insurance.mainCustomer;
 
 import com.roman.Insurance.encryption.EncryptionService;
+import com.roman.Insurance.mainCustomer.request.MainCustomerRequest;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -21,8 +20,8 @@ public class MainMainCustomerServiceImpl implements MainCustomerService {
     private EntityManager entityManager;
 
     @Override
-    public UUID createMainCustomer (MainCustomerDto mainCustomerDto) throws Exception {
-        MainCustomerEntity customerEntity = customerMapper.toEntity(mainCustomerDto);
+    public UUID createMainCustomer (MainCustomerRequest mainCustomerRequest) throws Exception {
+        MainCustomerEntity customerEntity = customerMapper.toEntity(mainCustomerRequest);
         MainCustomerEntity encryptedCustomerEntity = encryptionService.encrypt(customerEntity);
         mainCustomerRepository.saveAndFlush(encryptedCustomerEntity);
         entityManager.clear();
