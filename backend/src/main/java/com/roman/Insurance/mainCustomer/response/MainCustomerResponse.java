@@ -1,41 +1,32 @@
 package com.roman.Insurance.mainCustomer.response;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
+
+import com.roman.Insurance.insurance.response.InsuranceResponse;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 public record MainCustomerResponse(
         UUID id,
 
-        @NotBlank(message = "First name is required")
         String firstName,
 
-        @NotBlank(message = "Last name is required")
         String lastName,
 
-        @NotBlank(message = "Email is required")
-        @Email(message = "Invalid email format")
         String email,
 
-        @NotBlank(message = "Phone number is required")
         String phoneNumber,
 
-        @NotBlank(message = "Address is required")
         String address,
 
-        @NotBlank(message = "City is required")
         String city,
 
-        @NotBlank(message = "State is required")
         String state,
 
-        @NotBlank(message = "Zip code is required")
         String zipCode,
 
-        @NotBlank(message = "Personal identification number is required")
         String personalIdentificationNumber,
-
+        List<InsuranceResponse> insurances,
 
         LocalDateTime createdAt,
 

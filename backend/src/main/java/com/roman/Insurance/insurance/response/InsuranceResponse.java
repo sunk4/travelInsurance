@@ -1,5 +1,6 @@
 package com.roman.Insurance.insurance.response;
 
+import com.roman.Insurance.country.response.CountryResponse;
 import com.roman.Insurance.enums.StatusOfPayment;
 
 import java.time.LocalDate;
@@ -9,7 +10,7 @@ import java.util.UUID;
 
 public record InsuranceResponse(
         UUID id,
-        UUID countryId,
+        CountryResponse country,
 
         LocalDate startDate,
 
