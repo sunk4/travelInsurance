@@ -28,7 +28,7 @@ public class EmailServiceImpl implements EmailService {
                 mainCustomerEntity.getLastName() + "_" + mainCustomerEntity.getFirstName() + "_" + LocalDate.now() + ".pdf";
 
         String subject = "Cestovné poistenie " +
-                mainCustomerEntity.getLastName() + "_" + mainCustomerEntity.getFirstName();
+                mainCustomerEntity.getLastName() + " " + mainCustomerEntity.getFirstName();
 
         Context context = new Context();
         context.setVariable("mainCustomer", mainCustomerEntity);

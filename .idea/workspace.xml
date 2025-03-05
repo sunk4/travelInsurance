@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c713ce5-ebe1-4bec-9cbc-c1da5afa622c" name="Changes" comment="added swagger">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/customerInsurance/CustomerInsuranceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/customerInsurance/CustomerInsuranceServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/email/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/email/EmailService.java" afterDir="false" />
+    <list default="true" id="2c713ce5-ebe1-4bec-9cbc-c1da5afa622c" name="Changes" comment="changed email template, styled it, add more datas to show">
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/email/EmailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/email/EmailServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/stripe/StripeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/stripe/StripeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/.env-example" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/.env-example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/emailTemplate.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/emailTemplateForPayment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/emailTemplatePayed.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/emailTemplateWhenPayed.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -314,7 +306,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741164512664</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="changed email template, styled it, add more datas to show">
+      <option name="closed" value="true" />
+      <created>1741176207540</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1741176207540</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -357,6 +357,7 @@
     <MESSAGE value="added getCustomerById" />
     <MESSAGE value="added transaction for creating order" />
     <MESSAGE value="added swagger" />
-    <option name="LAST_COMMIT_MESSAGE" value="added swagger" />
+    <MESSAGE value="changed email template, styled it, add more datas to show" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed email template, styled it, add more datas to show" />
   </component>
 </project>
