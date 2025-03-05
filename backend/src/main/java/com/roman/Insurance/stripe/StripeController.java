@@ -69,7 +69,7 @@ public class StripeController {
                 emailService.sendEmailWithConfirmationAndAttachment(
                         customerEmail,
                         "Payment Confirmation",
-                        "emailTemplatePayed",
+                        "emailTemplateWhenPayed",
                         pdf,
                         "PaymentConfirmation_" + ".pdf"
 

@@ -1,5 +1,6 @@
 package com.roman.Insurance.email;
 
+import com.roman.Insurance.mainCustomer.MainCustomerEntity;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+import java.time.LocalDate;
+
 @Service
 @RequiredArgsConstructor
 public class EmailServiceImpl implements EmailService {
@@ -18,18 +21,23 @@ public class EmailServiceImpl implements EmailService {
     private final TemplateEngine templateEngine;
 
     @Override
-    public void sendEmailWithGeneratedAttachment (String to, String paymentLink, String subject, String templateName, byte[] fileData, String fileName) throws MessagingException {
+    public void sendEmailWithGeneratedAttachment (MainCustomerEntity mainCustomerEntity, String paymentLink, String templateName, byte[] fileData) throws MessagingException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        String fileName =
+                mainCustomerEntity.getLastName() + "_" + mainCustomerEntity.getFirstName() + "_" + LocalDate.now() + ".pdf";
+
+        String subject = "Cestovné poistenie " +
+                mainCustomerEntity.getLastName() + "_" + mainCustomerEntity.getFirstName();
 
         Context context = new Context();
-        context.setVariable("name", "User");
+        context.setVariable("mainCustomer", mainCustomerEntity);
         context.setVariable("paymentLink", paymentLink);
         String htmlContent = templateEngine.process(templateName, context);
 
         InputStreamSource attachment = new ByteArrayResource(fileData);
 
-        helper.setTo(to);
+        helper.setTo(mainCustomerEntity.getEmail());
         helper.setSubject(subject);
         helper.setText(htmlContent, true);
         helper.addAttachment(fileName, attachment);

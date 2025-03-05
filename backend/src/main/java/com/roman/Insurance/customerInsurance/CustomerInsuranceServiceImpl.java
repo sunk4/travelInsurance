@@ -55,8 +55,8 @@ public class CustomerInsuranceServiceImpl implements CustomerInsuranceService {
         String paymentLink = stripeService.createPaymentLink(totalPrice, "EUR"
                 , description, mainCustomerId, insuranceId);
 
-        emailService.sendEmailWithGeneratedAttachment(mainCustomer.getEmail(),
-                paymentLink, "Travel Insurance", "emailTemplate", generatedPdf, mainCustomer.getLastName() + mainCustomer.getFirstName() + ".pdf");
+        emailService.sendEmailWithGeneratedAttachment(mainCustomer,
+                paymentLink, "emailTemplateForPayment", generatedPdf);
 
     }
 }
