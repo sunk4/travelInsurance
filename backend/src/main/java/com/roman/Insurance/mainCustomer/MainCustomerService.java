@@ -1,5 +1,6 @@
 package com.roman.Insurance.mainCustomer;
 
+import com.roman.Insurance.common.PageResponse;
 import com.roman.Insurance.mainCustomer.request.MainCustomerRequest;
 import com.roman.Insurance.mainCustomer.response.MainCustomerResponse;
 
@@ -12,5 +13,6 @@ public interface MainCustomerService {
     MainCustomerEntity getCustomerByIdEncrypted (UUID customerId) throws Exception;
     MainCustomerEntity getCustomerById(UUID customerId);
 
-    List<MainCustomerResponse> getAllCustomers ();
+    PageResponse<MainCustomerResponse> getAllCustomers (UUID countryId, UUID coverageRegionId, String firstName, String lastName, int pageNum, int pageSize) throws Exception;
+
 }
