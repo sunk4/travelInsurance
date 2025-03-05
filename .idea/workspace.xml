@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c713ce5-ebe1-4bec-9cbc-c1da5afa622c" name="Changes" comment="added getCustomerById">
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/customerInsurance/CustomerInsuranceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/customerInsurance/CustomerInsuranceServiceImpl.java" afterDir="false" />
+    <list default="true" id="2c713ce5-ebe1-4bec-9cbc-c1da5afa622c" name="Changes" comment="added transaction for creating order">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/config/SwaggerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -290,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741160330313</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="added transaction for creating order">
+      <option name="closed" value="true" />
+      <created>1741160690826</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1741160690826</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -330,6 +340,7 @@
     <MESSAGE value="WIP working on get all customers with filters" />
     <MESSAGE value="get all customer with filter - spec done" />
     <MESSAGE value="added getCustomerById" />
-    <option name="LAST_COMMIT_MESSAGE" value="added getCustomerById" />
+    <MESSAGE value="added transaction for creating order" />
+    <option name="LAST_COMMIT_MESSAGE" value="added transaction for creating order" />
   </component>
 </project>
