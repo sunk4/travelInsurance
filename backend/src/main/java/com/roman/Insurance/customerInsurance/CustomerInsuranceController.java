@@ -2,6 +2,7 @@ package com.roman.Insurance.customerInsurance;
 
 import com.roman.Insurance.customerInsurance.request.CustomerTravelInsuranceRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,7 +20,7 @@ public class CustomerInsuranceController {
 
         customerInsuranceService.createTravelInsurance(customerTravelInsuranceRequest);
 
-        return null;
+        return new ResponseEntity<>(HttpStatus.CREATED);
 
     }
 }
