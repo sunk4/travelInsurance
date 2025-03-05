@@ -4,12 +4,8 @@ import com.roman.Insurance.common.PageResponse;
 import com.roman.Insurance.mainCustomer.response.MainCustomerResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -17,7 +13,7 @@ import java.util.UUID;
 @RequestMapping("/main-customer")
 public class MainCustomerController {
 
-    private final MainCustomerService mainMainCustomerService;
+    private final MainCustomerService mainCustomerService;
 
     @GetMapping
     public ResponseEntity<PageResponse<MainCustomerResponse>> getMainCustomer(
@@ -28,6 +24,11 @@ public class MainCustomerController {
             @RequestParam(defaultValue = "0") int pageNum,
             @RequestParam(defaultValue = "10") int pageSize
     ) throws Exception {
-        return ResponseEntity.ok(mainMainCustomerService.getAllCustomers(countryId,coverageRegionId,firstName,lastName,pageNum,pageSize));
+        return ResponseEntity.ok(mainCustomerService.getAllCustomers(countryId,coverageRegionId,firstName,lastName,pageNum,pageSize));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<MainCustomerResponse> getMainCustomerById(@PathVariable UUID id) throws Exception {
+        return ResponseEntity.ok(mainCustomerService.getCustomerByIdDto(id));
     }
 }

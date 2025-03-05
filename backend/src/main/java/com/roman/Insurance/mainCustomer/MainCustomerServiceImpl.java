@@ -111,4 +111,13 @@ public class MainCustomerServiceImpl implements MainCustomerService {
 
         );
     }
+
+    @Override
+    public MainCustomerResponse getCustomerByIdDto (UUID id) throws Exception {
+        MainCustomerEntity mainCustomerEntity =  getCustomerById(id);
+            MainCustomerEntity decryptedCustomer =
+                    encryptionService.decrypt(mainCustomerEntity);
+
+        return customerMapper.toDto(decryptedCustomer);
+    }
 }
