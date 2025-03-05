@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c713ce5-ebe1-4bec-9cbc-c1da5afa622c" name="Changes" comment="get all customer with filter - spec done">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/mainCustomer/MainCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/mainCustomer/MainCustomerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/mainCustomer/MainCustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/mainCustomer/MainCustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/mainCustomer/MainCustomerServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/mainCustomer/MainCustomerServiceImpl.java" afterDir="false" />
+    <list default="true" id="2c713ce5-ebe1-4bec-9cbc-c1da5afa622c" name="Changes" comment="added getCustomerById">
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/customerInsurance/CustomerInsuranceServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/customerInsurance/CustomerInsuranceServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -285,7 +282,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741159603874</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="added getCustomerById">
+      <option name="closed" value="true" />
+      <created>1741160330313</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1741160330313</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -324,6 +329,7 @@
     <MESSAGE value="added exception handler for better readability of errors msgs" />
     <MESSAGE value="WIP working on get all customers with filters" />
     <MESSAGE value="get all customer with filter - spec done" />
-    <option name="LAST_COMMIT_MESSAGE" value="get all customer with filter - spec done" />
+    <MESSAGE value="added getCustomerById" />
+    <option name="LAST_COMMIT_MESSAGE" value="added getCustomerById" />
   </component>
 </project>

@@ -19,6 +19,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class CustomerInsuranceServiceImpl implements CustomerInsuranceService {
     private final MainCustomerService customerService;
     private final InsuredPersonService insurePersonService;
