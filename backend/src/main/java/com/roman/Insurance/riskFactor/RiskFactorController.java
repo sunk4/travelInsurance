@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/risk-factors")
+@RequestMapping("/public/risk-factors")
 public class RiskFactorController {
     private final RiskFactorService riskFactorService;
 

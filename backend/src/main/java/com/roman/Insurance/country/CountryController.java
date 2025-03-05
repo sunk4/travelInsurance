@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/country")
+@RequestMapping("/public/country")
 @RequiredArgsConstructor
 public class CountryController {
     private final CountryService countryService;

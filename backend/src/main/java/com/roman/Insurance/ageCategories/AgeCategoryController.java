@@ -12,7 +12,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/ageCategories")
+@RequestMapping("/public/ageCategories")
 public class AgeCategoryController {
     private final AgeCategoryService ageCategoryService;
 

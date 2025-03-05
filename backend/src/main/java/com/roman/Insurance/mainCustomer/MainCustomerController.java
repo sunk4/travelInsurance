@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/main-customer")
+@RequestMapping("/private/main-customer")
 public class MainCustomerController {
 
     private final MainCustomerService mainCustomerService;

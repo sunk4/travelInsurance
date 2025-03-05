@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/stripe")
+@RequestMapping("/public/stripe")
 @RequiredArgsConstructor
 public class StripeController {
     @Value("${stripe.secret-key}")

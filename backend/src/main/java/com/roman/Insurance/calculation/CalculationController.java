@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/calculation")
+@RequestMapping("/public/calculation")
 @RequiredArgsConstructor
 public class CalculationController {
     private final CalculationService calculationService;
