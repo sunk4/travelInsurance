@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c713ce5-ebe1-4bec-9cbc-c1da5afa622c" name="Changes" comment="added auth + security">
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/customerInsurance/CustomerInsuranceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/customerInsurance/CustomerInsuranceController.java" afterDir="false" />
+    <list default="true" id="2c713ce5-ebe1-4bec-9cbc-c1da5afa622c" name="Changes" comment="added http status for creating of insurance">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/mainCustomer/MainCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/mainCustomer/MainCustomerController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -330,7 +331,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741205399415</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="added http status for creating of insurance">
+      <option name="closed" value="true" />
+      <created>1741205449522</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1741205449522</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -350,7 +359,6 @@
       <path value="$PROJECT_DIR$/backend" />
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="clean up" />
     <MESSAGE value="added total Calculation in service to maded it more modular" />
     <MESSAGE value="prepared MainCustomer, InsuredCustomers for creating travel insurance" />
     <MESSAGE value="added agefactor,riskFactor to created Insured person" />
@@ -375,6 +383,7 @@
     <MESSAGE value="changed email template, styled it, add more datas to show" />
     <MESSAGE value="small changes to template" />
     <MESSAGE value="added auth + security" />
-    <option name="LAST_COMMIT_MESSAGE" value="added auth + security" />
+    <MESSAGE value="added http status for creating of insurance" />
+    <option name="LAST_COMMIT_MESSAGE" value="added http status for creating of insurance" />
   </component>
 </project>

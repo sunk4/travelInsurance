@@ -25,6 +25,7 @@ public class MainCustomerController {
             @RequestParam(defaultValue = "10") int pageSize
     ) throws Exception {
         return ResponseEntity.ok(mainCustomerService.getAllCustomers(countryId,coverageRegionId,firstName,lastName,pageNum,pageSize));
+
     }
 
     @GetMapping("/{id}")
