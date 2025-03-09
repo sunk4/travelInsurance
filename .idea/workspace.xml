@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c713ce5-ebe1-4bec-9cbc-c1da5afa622c" name="Changes" comment="added http status for creating of insurance">
+    <list default="true" id="2c713ce5-ebe1-4bec-9cbc-c1da5afa622c" name="Changes" comment="fixed bug on stripe">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/mainCustomer/MainCustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/mainCustomer/MainCustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/.env-example" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/.env-example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -339,7 +343,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741205449522</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="fixed bug on stripe">
+      <option name="closed" value="true" />
+      <created>1741367423960</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1741367423960</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -359,7 +371,6 @@
       <path value="$PROJECT_DIR$/backend" />
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="added total Calculation in service to maded it more modular" />
     <MESSAGE value="prepared MainCustomer, InsuredCustomers for creating travel insurance" />
     <MESSAGE value="added agefactor,riskFactor to created Insured person" />
     <MESSAGE value="changed relationship betwen insurance and Customer - refactor, finished insurance creation" />
@@ -384,6 +395,7 @@
     <MESSAGE value="small changes to template" />
     <MESSAGE value="added auth + security" />
     <MESSAGE value="added http status for creating of insurance" />
-    <option name="LAST_COMMIT_MESSAGE" value="added http status for creating of insurance" />
+    <MESSAGE value="fixed bug on stripe" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed bug on stripe" />
   </component>
 </project>

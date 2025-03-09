@@ -16,7 +16,7 @@ public class MainCustomerController {
     private final MainCustomerService mainCustomerService;
 
     @GetMapping
-    public ResponseEntity<PageResponse<MainCustomerResponse>> getMainCustomer(
+    public ResponseEntity<PageResponse<MainCustomerResponse>> getMainCustomer (
             @RequestParam(required = false) UUID countryId,
             @RequestParam(required = false) UUID coverageRegionId,
             @RequestParam(required = false) String firstName,
@@ -24,12 +24,12 @@ public class MainCustomerController {
             @RequestParam(defaultValue = "0") int pageNum,
             @RequestParam(defaultValue = "10") int pageSize
     ) throws Exception {
-        return ResponseEntity.ok(mainCustomerService.getAllCustomers(countryId,coverageRegionId,firstName,lastName,pageNum,pageSize));
+        return ResponseEntity.ok(mainCustomerService.getAllCustomers(countryId, coverageRegionId, firstName, lastName, pageNum, pageSize));
 
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<MainCustomerResponse> getMainCustomerById(@PathVariable UUID id) throws Exception {
+    public ResponseEntity<MainCustomerResponse> getMainCustomerById (@PathVariable UUID id) throws Exception {
         return ResponseEntity.ok(mainCustomerService.getCustomerByIdDto(id));
     }
 }
