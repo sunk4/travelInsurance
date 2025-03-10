@@ -47,17 +47,26 @@ public class EmailServiceImpl implements EmailService {
     }
 
     @Override
-    public void sendEmailWithConfirmationAndAttachment (String to, String subject, String templateName, byte[] fileData, String fileName) throws MessagingException {
+    public void sendEmailWithConfirmationAndAttachment (
+            MainCustomerEntity mainCustomerEntity,
+            String templateName,
+            byte[] fileData
+    ) throws MessagingException {
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        String fileName =
+                mainCustomerEntity.getLastName() + "_" + mainCustomerEntity.getFirstName() + "_" + LocalDate.now() + ".pdf";
+
+        String subject = "Cestovné poistenie " +
+                mainCustomerEntity.getLastName() + " " + mainCustomerEntity.getFirstName() + " "  + "Platba prebehla úspešne";
 
         Context context = new Context();
-        context.setVariable("name", "User");
+        context.setVariable("mainCustomer", mainCustomerEntity);
         String htmlContent = templateEngine.process(templateName, context);
 
         InputStreamSource attachment = new ByteArrayResource(fileData);
 
-        helper.setTo(to);
+        helper.setTo(mainCustomerEntity.getEmail());
         helper.setSubject(subject);
         helper.setText(htmlContent, true);
         helper.addAttachment(fileName, attachment);

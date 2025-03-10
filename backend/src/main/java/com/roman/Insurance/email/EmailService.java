@@ -12,10 +12,9 @@ public interface EmailService {
     ) throws MessagingException;
 
     void sendEmailWithConfirmationAndAttachment (
-            String to,
-            String subject,
+            MainCustomerEntity mainCustomerEntity,
             String templateName,
-            byte[] fileData, String fileName
+            byte[] fileData
     ) throws MessagingException;
 
 }
