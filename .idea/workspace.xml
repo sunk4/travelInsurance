@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c713ce5-ebe1-4bec-9cbc-c1da5afa622c" name="Changes" comment="chnaged and fixed auth">
+    <list default="true" id="2c713ce5-ebe1-4bec-9cbc-c1da5afa622c" name="Changes" comment="changed stripe payment - add change status of payment">
+      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/roman/Insurance/ageCategories/AgeCategoryControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/email/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/email/EmailService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/email/EmailServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/email/EmailServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/stripe/StripeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/stripe/StripeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/stripe/StripeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/stripe/StripeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/stripe/StripeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/stripe/StripeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/templates/emailTemplateWhenPayed.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/templates/emailTemplateWhenPayed.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/ageCategories/AgeCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/ageCategories/AgeCategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/customerInsurance/CustomerInsuranceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/customerInsurance/CustomerInsuranceController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +22,7 @@
         <option value="Interface" />
         <option value="Record" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -47,20 +46,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Application.InsuranceApplication.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Application.InsuranceApplication.executor": "Run",
+    "JUnit.AgeCategoryControllerTest.executor": "Run",
+    "JUnit.AgeCategoryControllerTest.getAgeCategoryById.executor": "Run",
+    "JUnit.AgeCategoryControllerTest.getAgeCategoryById_notFound.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.codeium.enabled": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.roman.Insurance.customerInsurance" />
@@ -74,8 +78,14 @@
       <recent name="C:\Users\Roman\Desktop\insurance\backend\src\main\resources" />
       <recent name="C:\Users\Roman\Desktop\insurance\backend\src\main\resources\templates\static\css" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.roman.Insurance.ageCategories" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.AgeCategoryControllerTest">
     <configuration name="InsuranceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.roman.Insurance.InsuranceApplication" />
       <module name="Insurance" />
@@ -89,9 +99,59 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AgeCategoryControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Insurance" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.roman.Insurance.ageCategories.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.roman.Insurance.ageCategories" />
+      <option name="MAIN_CLASS_NAME" value="com.roman.Insurance.ageCategories.AgeCategoryControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AgeCategoryControllerTest.getAgeCategoryById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Insurance" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.roman.Insurance.ageCategories.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.roman.Insurance.ageCategories" />
+      <option name="MAIN_CLASS_NAME" value="com.roman.Insurance.ageCategories.AgeCategoryControllerTest" />
+      <option name="METHOD_NAME" value="getAgeCategoryById" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AgeCategoryControllerTest.getAgeCategoryById_notFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Insurance" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.roman.Insurance.ageCategories.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.roman.Insurance.ageCategories" />
+      <option name="MAIN_CLASS_NAME" value="com.roman.Insurance.ageCategories.AgeCategoryControllerTest" />
+      <option name="METHOD_NAME" value="getAgeCategoryById_notFound" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AgeCategoryControllerTest" />
+        <item itemvalue="JUnit.AgeCategoryControllerTest.getAgeCategoryById_notFound" />
         <item itemvalue="Application.InsuranceApplication" />
+        <item itemvalue="JUnit.AgeCategoryControllerTest.getAgeCategoryById" />
       </list>
     </recent_temporary>
   </component>
@@ -360,7 +420,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741547911233</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="changed stripe payment - add change status of payment">
+      <option name="closed" value="true" />
+      <created>1741587996692</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1741587996692</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -380,7 +448,6 @@
       <path value="$PROJECT_DIR$/backend" />
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="added agefactor,riskFactor to created Insured person" />
     <MESSAGE value="changed relationship betwen insurance and Customer - refactor, finished insurance creation" />
     <MESSAGE value="added insuranceTypeIds to insurance when creating insurance" />
     <MESSAGE value="refactor to two endpoints for One request - added total price to Insurance" />
@@ -405,6 +472,7 @@
     <MESSAGE value="added http status for creating of insurance" />
     <MESSAGE value="fixed bug on stripe" />
     <MESSAGE value="chnaged and fixed auth" />
-    <option name="LAST_COMMIT_MESSAGE" value="chnaged and fixed auth" />
+    <MESSAGE value="changed stripe payment - add change status of payment" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed stripe payment - add change status of payment" />
   </component>
 </project>

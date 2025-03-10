@@ -1,6 +1,7 @@
 package com.roman.Insurance.customerInsurance;
 
 import com.roman.Insurance.customerInsurance.request.CustomerTravelInsuranceRequest;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ public class CustomerInsuranceController {
     private final CustomerInsuranceService customerInsuranceService;
 
     @PostMapping
-    public ResponseEntity<Void> createTravelInsurance (@RequestBody CustomerTravelInsuranceRequest customerTravelInsuranceRequest) throws Exception {
+    public ResponseEntity<Void> createTravelInsurance (@Valid @RequestBody CustomerTravelInsuranceRequest customerTravelInsuranceRequest) throws Exception {
 
         customerInsuranceService.createTravelInsurance(customerTravelInsuranceRequest);
 

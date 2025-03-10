@@ -4,6 +4,7 @@ import com.roman.Insurance.ageCategories.response.AgeCategoryResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +24,7 @@ public class AgeCategoryController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AgeCategoryResponse> getAgeCategoryById (UUID id) {
+    public ResponseEntity<AgeCategoryResponse> getAgeCategoryById (@PathVariable UUID id) {
         AgeCategoryResponse ageCategory = ageCategoryService.getAgeCategoryById(id);
         return ResponseEntity.ok(ageCategory);
     }
