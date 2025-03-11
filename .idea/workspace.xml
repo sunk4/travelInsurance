@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c713ce5-ebe1-4bec-9cbc-c1da5afa622c" name="Changes" comment="changed stripe payment - add change status of payment">
-      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/roman/Insurance/ageCategories/AgeCategoryControllerTest.java" afterDir="false" />
+    <list default="true" id="2c713ce5-ebe1-4bec-9cbc-c1da5afa622c" name="Changes" comment="units tests - age category - controller">
+      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/roman/Insurance/calculation/CalculationControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/roman/Insurance/country/CountryControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/roman/Insurance/riskFactor/RiskFactorControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/ageCategories/AgeCategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/ageCategories/AgeCategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/customerInsurance/CustomerInsuranceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/roman/Insurance/customerInsurance/CustomerInsuranceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/roman/Insurance/ageCategories/AgeCategoryControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/com/roman/Insurance/ageCategories/AgeCategoryControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +53,10 @@
     "JUnit.AgeCategoryControllerTest.executor": "Run",
     "JUnit.AgeCategoryControllerTest.getAgeCategoryById.executor": "Run",
     "JUnit.AgeCategoryControllerTest.getAgeCategoryById_notFound.executor": "Run",
+    "JUnit.CountryControllerTest.executor": "Run",
+    "JUnit.InsuranceApplicationTests.executor": "Run",
+    "JUnit.RiskFactorControllerTest.executor": "Run",
+    "JUnit.RiskFactorControllerTest.findRiskFactorById.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -82,10 +86,13 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.roman.Insurance.calculation" />
+      <recent name="com.roman.Insurance.riskFactor" />
+      <recent name="com.roman.Insurance.country" />
       <recent name="com.roman.Insurance.ageCategories" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.AgeCategoryControllerTest">
+  <component name="RunManager" selected="Application.InsuranceApplication">
     <configuration name="InsuranceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.roman.Insurance.InsuranceApplication" />
       <module name="Insurance" />
@@ -99,48 +106,62 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AgeCategoryControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CountryControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Insurance" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.roman.Insurance.ageCategories.*" />
+          <option name="PATTERN" value="com.roman.Insurance.country.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.roman.Insurance.ageCategories" />
-      <option name="MAIN_CLASS_NAME" value="com.roman.Insurance.ageCategories.AgeCategoryControllerTest" />
+      <option name="PACKAGE_NAME" value="com.roman.Insurance.country" />
+      <option name="MAIN_CLASS_NAME" value="com.roman.Insurance.country.CountryControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AgeCategoryControllerTest.getAgeCategoryById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InsuranceApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Insurance" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.roman.Insurance.ageCategories.*" />
+          <option name="PATTERN" value="com.roman.Insurance.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.roman.Insurance.ageCategories" />
-      <option name="MAIN_CLASS_NAME" value="com.roman.Insurance.ageCategories.AgeCategoryControllerTest" />
-      <option name="METHOD_NAME" value="getAgeCategoryById" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.roman.Insurance" />
+      <option name="MAIN_CLASS_NAME" value="com.roman.Insurance.InsuranceApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AgeCategoryControllerTest.getAgeCategoryById_notFound" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RiskFactorControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Insurance" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.roman.Insurance.ageCategories.*" />
+          <option name="PATTERN" value="com.roman.Insurance.riskFactor.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.roman.Insurance.ageCategories" />
-      <option name="MAIN_CLASS_NAME" value="com.roman.Insurance.ageCategories.AgeCategoryControllerTest" />
-      <option name="METHOD_NAME" value="getAgeCategoryById_notFound" />
+      <option name="PACKAGE_NAME" value="com.roman.Insurance.riskFactor" />
+      <option name="MAIN_CLASS_NAME" value="com.roman.Insurance.riskFactor.RiskFactorControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RiskFactorControllerTest.findRiskFactorById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Insurance" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.roman.Insurance.riskFactor.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.roman.Insurance.riskFactor" />
+      <option name="MAIN_CLASS_NAME" value="com.roman.Insurance.riskFactor.RiskFactorControllerTest" />
+      <option name="METHOD_NAME" value="findRiskFactorById" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -148,10 +169,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AgeCategoryControllerTest" />
-        <item itemvalue="JUnit.AgeCategoryControllerTest.getAgeCategoryById_notFound" />
         <item itemvalue="Application.InsuranceApplication" />
-        <item itemvalue="JUnit.AgeCategoryControllerTest.getAgeCategoryById" />
+        <item itemvalue="JUnit.RiskFactorControllerTest.findRiskFactorById" />
+        <item itemvalue="JUnit.RiskFactorControllerTest" />
+        <item itemvalue="JUnit.InsuranceApplicationTests" />
+        <item itemvalue="JUnit.CountryControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -428,7 +450,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741587996692</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="units tests - age category - controller">
+      <option name="closed" value="true" />
+      <created>1741623980957</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1741623980957</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -448,7 +478,6 @@
       <path value="$PROJECT_DIR$/backend" />
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="changed relationship betwen insurance and Customer - refactor, finished insurance creation" />
     <MESSAGE value="added insuranceTypeIds to insurance when creating insurance" />
     <MESSAGE value="refactor to two endpoints for One request - added total price to Insurance" />
     <MESSAGE value="extends calculation with datas of insured persons" />
@@ -473,6 +502,7 @@
     <MESSAGE value="fixed bug on stripe" />
     <MESSAGE value="chnaged and fixed auth" />
     <MESSAGE value="changed stripe payment - add change status of payment" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed stripe payment - add change status of payment" />
+    <MESSAGE value="units tests - age category - controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="units tests - age category - controller" />
   </component>
 </project>
