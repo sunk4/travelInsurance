@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c713ce5-ebe1-4bec-9cbc-c1da5afa622c" name="Changes" comment="units tests - age category - controller">
+    <list default="true" id="2c713ce5-ebe1-4bec-9cbc-c1da5afa622c" name="Changes" comment="units tests - country,riskfactor controller">
       <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/roman/Insurance/calculation/CalculationControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/roman/Insurance/country/CountryControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/test/java/com/roman/Insurance/riskFactor/RiskFactorControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/roman/Insurance/ageCategories/AgeCategoryControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/com/roman/Insurance/ageCategories/AgeCategoryControllerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,29 +43,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Application.InsuranceApplication.executor": "Run",
-    "JUnit.AgeCategoryControllerTest.executor": "Run",
-    "JUnit.AgeCategoryControllerTest.getAgeCategoryById.executor": "Run",
-    "JUnit.AgeCategoryControllerTest.getAgeCategoryById_notFound.executor": "Run",
-    "JUnit.CountryControllerTest.executor": "Run",
-    "JUnit.InsuranceApplicationTests.executor": "Run",
-    "JUnit.RiskFactorControllerTest.executor": "Run",
-    "JUnit.RiskFactorControllerTest.findRiskFactorById.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "com.codeium.enabled": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Application.InsuranceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AgeCategoryControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AgeCategoryControllerTest.getAgeCategoryById.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AgeCategoryControllerTest.getAgeCategoryById_notFound.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CountryControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.InsuranceApplicationTests.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RiskFactorControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RiskFactorControllerTest.findRiskFactorById.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.roman.Insurance.customerInsurance" />
@@ -92,7 +89,7 @@
       <recent name="com.roman.Insurance.ageCategories" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.InsuranceApplication">
+  <component name="RunManager" selected="JUnit.CalculationControllerTest.calculatePrice">
     <configuration name="InsuranceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.roman.Insurance.InsuranceApplication" />
       <module name="Insurance" />
@@ -106,32 +103,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CountryControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CalculationControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Insurance" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.roman.Insurance.country.*" />
+          <option name="PATTERN" value="com.roman.Insurance.calculation.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.roman.Insurance.country" />
-      <option name="MAIN_CLASS_NAME" value="com.roman.Insurance.country.CountryControllerTest" />
+      <option name="PACKAGE_NAME" value="com.roman.Insurance.calculation" />
+      <option name="MAIN_CLASS_NAME" value="com.roman.Insurance.calculation.CalculationControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InsuranceApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CalculationControllerTest.calculatePrice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Insurance" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.roman.Insurance.*" />
+          <option name="PATTERN" value="com.roman.Insurance.calculation.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.roman.Insurance" />
-      <option name="MAIN_CLASS_NAME" value="com.roman.Insurance.InsuranceApplicationTests" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="com.roman.Insurance.calculation" />
+      <option name="MAIN_CLASS_NAME" value="com.roman.Insurance.calculation.CalculationControllerTest" />
+      <option name="METHOD_NAME" value="calculatePrice" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -169,11 +167,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CalculationControllerTest.calculatePrice" />
+        <item itemvalue="JUnit.CalculationControllerTest" />
         <item itemvalue="Application.InsuranceApplication" />
         <item itemvalue="JUnit.RiskFactorControllerTest.findRiskFactorById" />
         <item itemvalue="JUnit.RiskFactorControllerTest" />
-        <item itemvalue="JUnit.InsuranceApplicationTests" />
-        <item itemvalue="JUnit.CountryControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -458,7 +456,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741623980957</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="units tests - country,riskfactor controller">
+      <option name="closed" value="true" />
+      <created>1741706512448</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1741706512448</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -478,7 +484,6 @@
       <path value="$PROJECT_DIR$/backend" />
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
-    <MESSAGE value="added insuranceTypeIds to insurance when creating insurance" />
     <MESSAGE value="refactor to two endpoints for One request - added total price to Insurance" />
     <MESSAGE value="extends calculation with datas of insured persons" />
     <MESSAGE value="pdf gen" />
@@ -503,6 +508,7 @@
     <MESSAGE value="chnaged and fixed auth" />
     <MESSAGE value="changed stripe payment - add change status of payment" />
     <MESSAGE value="units tests - age category - controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="units tests - age category - controller" />
+    <MESSAGE value="units tests - country,riskfactor controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="units tests - country,riskfactor controller" />
   </component>
 </project>
